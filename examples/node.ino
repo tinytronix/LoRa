@@ -61,7 +61,7 @@ void setup()
   delay(500);
   
   Serial.println("\n");
-  Serial.print("LoRa Bridg");
+  Serial.print("LoRa Node");
  
   lora.begin(TASK_TIME_MS,
              SX126X_PACKET_TYPE_LORA,
@@ -81,7 +81,9 @@ void setup()
                     false                 //invertIrq
                     );
 
- lora.RegisterCallback(0x12345678, LORA_ACTOR_REQ, (void*)onLORA_ACTOR_REQ);
+ lora.RegisterCallback(0x12345678,              //Lora node ID 
+                       LORA_ACTOR_REQ,          //Lora command id
+                       (void*)onLORA_ACTOR_REQ);//callback function for command LORA_ACTOR_REQ
 }
 
 
