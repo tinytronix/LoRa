@@ -1,0 +1,20 @@
+{
+"name": "LoraNode",
+"frameworks": "Arduino",
+"keywords": "SX1268, SX1262, DRF1268T, SX1262T, LoRa, Lora",
+"description": "Implement a homeautomation protocol using the SX126x Arduino library",
+"authors":
+[
+    {
+        "name": "Frank.Engel",
+        "email": "frank.engel@gmx.de.de",
+        "url": "http://www.tnx-berlin.de",
+        "maintainer": true
+    },
+],
+"repository":
+{
+    "type": "git",
+    "url": "https://github.com/tinytronix/LoraNode"
+}
+}
