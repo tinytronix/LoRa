@@ -90,10 +90,18 @@ void loop()
 {
   if ( txTimer == 0 )
   {
-    lora.Send(0x12345678,        //ID of Lora Node  
-              LORA_ACTOR_REQ,    //Command ID
-              &data,             //pointer to data
-              1);                //length
+    ACTOR_REQ req;
+  
+    req.id = 3;       //Actor id
+    req.action = 1;   //Actor action
+
+    //triggers callback onLORA_ACTOR_REQ(uint16_t id, uint8_t action)
+    //on client node side
+    lora.Send(0x12345678,                   //ID of Lora Node device 
+              LORA_ACTOR_REQ,               //Command ID
+              (uint8_t*)&req,               //pointer to data
+              (uint8_t)sizeof(ACTOR_REQ));  //length
+
               
     txTimer = TIME_SECONDS(1);
   }
