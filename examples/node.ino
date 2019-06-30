@@ -68,6 +68,7 @@ void setup()
              RF_FREQUENCY,              //frequency in Hz
              TX_OUTPUT_POWER);          //tx power in dBm
 
+  //for encryption #define LORANODE_NO_ENCRYPT before including LoraGateway.h
   //cipher = {0x00,0x00,0x00};
   //lora.EncryptDecryptKey(&cipher);
   
