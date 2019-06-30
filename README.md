@@ -13,9 +13,9 @@ In general all communication is initiated by the gateway. The nodes can only sen
 were adressed by the gateway. 
 
 ## Prerequisites
-Install the SX126x Lora driver into Arduino IDE
-Install SpritzCipher into Arduino IDE if you want Encryption
-Install QList into Arduino IDE
+Install the SX126x Lora driver into Arduino IDE (https://github.com/tinytronix/SX126x)
+Install SpritzCipher into Arduino IDE if you want Encryption (https://github.com/abderraouf-adjal/ArduinoSpritzCipher)
+Install QList into Arduino IDE (https://github.com/SloCompTech/QList)
 
 ## Where to start
 Please refer to the gateway and node example!
