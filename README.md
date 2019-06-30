@@ -19,3 +19,8 @@ were adressed by the gateway.
 
 ## Where to start
 Please refer to the gateway and node example!
+
+## FAQ
+Q: Is this thing LoraWAN compatible? <br>
+A: One may use the SX126x driver and the hardware as a base for a LoRaWAN device but this projects does not support LoRaWAN.
+The gateway and the node software implement an completely different (home brewed) communication protocol.<br>
