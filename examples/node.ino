@@ -107,5 +107,5 @@ void onLORA_ACTOR_REQ(uint16_t id, uint8_t action)
 void loop() 
 {
   lora.Service();
-  delay(25);
+  delay(TASK_TIME_MS);
 }
