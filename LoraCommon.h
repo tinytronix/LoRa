@@ -56,7 +56,7 @@ typedef struct _tagACTOR_RESP
 {
 	uint8_t				status; 	                            					                                                       
 }ACTOR_RESP;
-
+ 
 typedef struct _tagSENSOR_REQ
 {
 	uint8_t				startId;
