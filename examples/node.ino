@@ -90,7 +90,9 @@ void setup()
 //-------------------------------------------------------------------------------------
 //
 // onLORA_ACTOR_REQ
-//
+// This callback is called whenever a LORA_ACTOR_REQ message from the gateway
+// was received. The callback is called from lora.Service() so it is synchron to 
+// the arduino main loop.
 //------------------------------------------------------------------------------------- 
 void onLORA_ACTOR_REQ(uint16_t id, uint8_t action)
 {
