@@ -13,12 +13,12 @@
 
 LoraGateway::LoraGateway(int spiSelect, int reset, int busy, int interrupt) : SX126x(spiSelect,reset,busy,interrupt)
 {
-	timer									= LORA_TIMER_INACTIVE;	
+  timer  = LORA_TIMER_INACTIVE;	
 
 #ifndef LORANODE_NO_ENCRYPT
-	encryptDecryptState 	= 0;
+  encryptDecryptState 	= 0;
 #endif
-	return;
+  return;
 }
 
 LoraGateway::~LoraGateway()
@@ -27,31 +27,31 @@ LoraGateway::~LoraGateway()
 
 void LoraGateway::begin(uint8_t taskIntervalInMs, uint8_t spreadingFactor, uint32_t frequencyInHz, int8_t txPowerInDbm) 
 {
-	taskInterval 							= taskIntervalInMs; 
+  taskInterval	            = taskIntervalInMs; 
   currTransaction.state     = LORA_PROTOCOL_STATE_IDLE;
   transactionCtxFactory     = 0;
-	SX126x::begin(spreadingFactor, frequencyInHz, txPowerInDbm); 
+  SX126x::begin(spreadingFactor, frequencyInHz, txPowerInDbm); 
 }
 
 void LoraGateway::LoRaConfig(uint8_t spreadingFactor, uint8_t bandwidth, uint8_t codingRate, uint16_t preambleLength, uint8_t payloadLen, bool crcOn, bool invertIrq) 
 {
-	SX126x::LoRaConfig(spreadingFactor, bandwidth, codingRate, preambleLength, payloadLen, crcOn, invertIrq);
+  SX126x::LoRaConfig(spreadingFactor, bandwidth, codingRate, preambleLength, payloadLen, crcOn, invertIrq);
 }
 	
 void LoraGateway::ReceiveResp(void)
 {
-	uint8_t rxLen = 0;
+  uint8_t rxLen = 0;
  
   if ( true == ReceiveMode() )
   { 
-		rxLen = SX126x::Receive((uint8_t*)&currTransaction.loraFrameRx, sizeof(LORAFRAME));
+    rxLen = SX126x::Receive((uint8_t*)&currTransaction.loraFrameRx, sizeof(LORAFRAME));
     if ( currTransaction.state < LORA_PROTOCOL_STATE_IDLE )
     {
       if ( (rxLen > sizeof(LORAHEAD)) && (rxLen <= sizeof(LORAFRAME)) )
       {
         currTransaction.frameLenRx = rxLen;
 #ifndef LORANODE_NO_ENCRYPT
-			  EncryptDecrypt((uint8_t*)&currTransaction.loraFrameRx, (uint8_t*)&currTransaction.loraFrameRx, rxLen);
+	EncryptDecrypt((uint8_t*)&currTransaction.loraFrameRx, (uint8_t*)&currTransaction.loraFrameRx, rxLen);
 #endif
         if ( currTransaction.loraFrameRx.head.transactionContext == currTransaction.loraFrameTx.head.transactionContext )
         {
@@ -86,21 +86,21 @@ void LoraGateway::ProcessTransaction(void)
   {
     case LORA_PROTOCOL_STATE_TRANSMIT:
 #ifndef LORANODE_NO_ENCRYPT
-			EncryptDecrypt((uint8_t*)&currTransaction.loraFrameTx, (uint8_t*)&d, currTransaction.frameLenTx);
-			if ( SX126x::Send((uint8_t*)&d, currTransaction.frameLenTx, SX126x_TXMODE_ASYNC) )
+      EncryptDecrypt((uint8_t*)&currTransaction.loraFrameTx, (uint8_t*)&d, currTransaction.frameLenTx);
+      if ( SX126x::Send((uint8_t*)&d, currTransaction.frameLenTx, SX126x_TXMODE_ASYNC) )
 #else
       if ( SX126x::Send((uint8_t*)&currTransaction.loraFrameTx, currTransaction.frameLenTx, SX126x_TXMODE_ASYNC) )
 #endif
       {
         if ( currTransaction.timeout > 0 )
         {
-        	Serial.println("TRANSMIT -> WAITACK");
-        	currTransaction.state = LORA_PROTOCOL_STATE_WAITACK;
+          Serial.println("TRANSMIT -> WAITACK");
+          currTransaction.state = LORA_PROTOCOL_STATE_WAITACK;
         }
         else
         {
-        	Serial.println("TRANSMIT -> IDLE");
-        	currTransaction.state = LORA_PROTOCOL_STATE_IDLE;
+          Serial.println("TRANSMIT -> IDLE");
+          currTransaction.state = LORA_PROTOCOL_STATE_IDLE;
         }
       }
       break;
@@ -134,18 +134,18 @@ void LoraGateway::ProcessTransaction(void)
 
 void LoraGateway::Timer(void)
 {	
-	if ( (timer != LORA_TIMER_INACTIVE) && (timer > 0) )
-		timer--;
+  if ( (timer != LORA_TIMER_INACTIVE) && (timer > 0) )
+    timer--;
 }
 
 #ifndef LORANODE_NO_ENCRYPT
 void  LoraGateway::EncryptDecrypt(uint8_t* input, uint8_t* output, uint16_t len)
 {
-		if ( encryptDecryptState == 0 )
-	{
-		memcpy(output, input, len);
-		return;
-	}
+  if ( encryptDecryptState == 0 )
+  {
+    memcpy(output, input, len);
+    return;
+  }
 		
   if ( encryptDecryptState == 1 )
   {
@@ -163,9 +163,9 @@ void  LoraGateway::EncryptDecrypt(uint8_t* input, uint8_t* output, uint16_t len)
 
 void LoraGateway::EncryptDecryptKey(CIPHERKEY * key)
 {
-	encryptDecryptKey = *key;
-	spritz_setup(&encryptDecryptCtx, (uint8_t*)&encryptDecryptKey, sizeof(encryptDecryptKey));
-	encryptDecryptState = 2;
+  encryptDecryptKey = *key;
+  spritz_setup(&encryptDecryptCtx, (uint8_t*)&encryptDecryptKey, sizeof(encryptDecryptKey));
+  encryptDecryptState = 2;
 }
 #endif
 
@@ -193,14 +193,13 @@ void LoraGateway::Send(uint32_t radioId, uint8_t cmdId, uint8_t *pData, uint8_t 
 void LoraGateway::Service(void) 
 {
 #ifndef LORANODE_NO_ENCRYPT
-	if ( encryptDecryptState == 1 )
-	{
-		spritz_setup(&encryptDecryptCtx, (uint8_t*)&encryptDecryptKey, sizeof(encryptDecryptKey));
-		encryptDecryptState = 2;
-	}
+  if ( encryptDecryptState == 1 )
+  {
+    spritz_setup(&encryptDecryptCtx, (uint8_t*)&encryptDecryptKey, sizeof(encryptDecryptKey));
+    encryptDecryptState = 2;
+  }
 #endif
-	Timer();
-	ReceiveResp();
-	ProcessTransaction();
-
+  Timer();
+  ReceiveResp();
+  ProcessTransaction();
 }
