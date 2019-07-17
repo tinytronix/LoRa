@@ -20,19 +20,19 @@
 
 typedef enum _tagLORAMDID
 {
-	//Requests immer ungerade, Responses immer gerade Zahl
-	//Diese Festlegung wird benutzt, um Gateway-Funktionen und Node-Funktionen 
-	//auseinander zu halten
-	LORA_ACTOR_REQ				= 0x01,
-	LORA_ACTOR_RESP				= 0x02,
-	LORA_SENSOR_REQ				= 0x03,
-	LORA_SENSOR_RESP			= 0x04,
-	LORA_EEPWRITE_REQ			= 0x05,
-	LORA_EEPWRITE_RESP		= 0x06,
-	LORA_EEPREAD_REQ			= 0x07,
-	LORA_EEPREAD_RESP			= 0x08,
-	LORA_PROPERTY_REQ			= 0x09,
-	LORA_PROPERTY_RESP		= 0x0A
+  //Requests immer ungerade, Responses immer gerade Zahl
+  //Diese Festlegung wird benutzt, um Gateway-Funktionen und Node-Funktionen 
+  //auseinander zu halten
+  LORA_ACTOR_REQ	= 0x01,
+  LORA_ACTOR_RESP	= 0x02,
+  LORA_SENSOR_REQ	= 0x03,
+  LORA_SENSOR_RESP	= 0x04,
+  LORA_EEPWRITE_REQ	= 0x05,
+  LORA_EEPWRITE_RESP	= 0x06,
+  LORA_EEPREAD_REQ	= 0x07,
+  LORA_EEPREAD_RESP	= 0x08,
+  LORA_PROPERTY_REQ	= 0x09,
+  LORA_PROPERTY_RESP	= 0x0A
 }LORACMDID;
 
 //GW
@@ -47,19 +47,19 @@ typedef struct _tagLORAHEAD
 
 typedef struct _tagACTOR_REQ
 {
-  uint16_t			id; 	
-	uint8_t				action; 	                            //0:off  1:on  2:pulseUp  3:pulseDown                          					                                                       
+  uint16_t id; 	
+  uint8_t action; 	                         //0:off  1:on  2:pulseUp  3:pulseDown                          					                                                       
 }ACTOR_REQ;
 
 
 typedef struct _tagACTOR_RESP
 {
-	uint8_t				status; 	                            					                                                       
+  uint8_t status; 	                            					                                                       
 }ACTOR_RESP;
  
 typedef struct _tagSENSOR_REQ
 {
-	uint8_t				startId;
+  uint8_t	startId;
   uint8_t       nSensors;   //Anzahl der abzufragenden Sensoren	                            					                                                       
 }SENSOR_REQ;
 
@@ -71,19 +71,19 @@ typedef struct _tagSENSOR_ELEM
 
 typedef struct _tagSENSOR_RESP
 {
-	uint8_t				nSensors;
+  uint8_t	nSensors;
   SENSOR_ELEM   sensor[6];      //1..6 Sensorwerte					                                                       
 }SENSOR_RESP;
 
 
 typedef struct _tagFRAME
 {
-  LORAHEAD 			head;
+  LORAHEAD head;
   union 
   {	
-  	uint8_t			data;
-  	ACTOR_REQ		actorReq;
-  	ACTOR_RESP	actorResp;
+    uint8_t	data;
+    ACTOR_REQ	actorReq;
+    ACTOR_RESP	actorResp;
     SENSOR_REQ  sensorReq;
     SENSOR_RESP sensorResp;
   };                      					                                                       
@@ -92,7 +92,7 @@ typedef struct _tagFRAME
 
 typedef struct _tagCipherKey
 {
-	uint8_t key[3];
+  uint8_t key[3];
 }CIPHERKEY;
 
 #endif //_LORACOMMON_H
