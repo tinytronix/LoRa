@@ -1,5 +1,12 @@
 #include <LoraNode.h>
 
+/*
+*
+* This example can be used for node components:
+* - LoraBridge Module
+* - LoraInwallShuttermodule
+*
+*/
 
 //-------------------------------------------------------------------------------------
 //
