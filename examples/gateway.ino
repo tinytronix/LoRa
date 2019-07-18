@@ -1,5 +1,11 @@
 #include <LoraGateway.h>
 
+/*
+*
+* This example can be used for the lora gateway:
+*
+*/
+
 //-------------------------------------------------------------------------------------
 //
 // Defines
