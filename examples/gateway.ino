@@ -2,7 +2,8 @@
 
 /*
 *
-* This example can be used for the lora gateway:
+* This example can be used for the lora gateway
+* (in the Arduino IDE set board to "Arduino Pro or Pro Mini")
 *
 */
 
