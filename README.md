@@ -7,7 +7,7 @@ This library sits on top of my SX126x LoRa driver and implements a C++ class for
 It can be used to set up a private LoRa network for e.g. home automation infrastructure which consists of one gateway and arbitrary nodes like sensors, actors and so on.
 
 The communication protocol includes encryption and message repeating in case there is no answer from the node.
-On the node side there is a callback interface. So data input from gateway ends up in a node callback.
+On the node side there is a callback interface. So data input from gateway ends up in a node software callback function.
 This callback delivers the gateway data as function parameter. Please see the example for more information!
 
 In general all communication is initiated by the gateway (data REQUEST). The nodes can only send (data RESPONSE) if they
