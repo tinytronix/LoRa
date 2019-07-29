@@ -1,14 +1,17 @@
 # LoRa
-An Arduino Library for creating a private LoRa network consisting of a Gateway and multiple nodes for home 
-automation purpose.
+An Arduino Library for peer-to-peer LoRa data communication for home automation purpose.
 
 This library sits on top of my SX126x LoRa driver and implements a C++ class for a Lora gateway and a C++ class for multiple Lora nodes. Both classes implement their part of a communication protocol to let both talk to each other. 
 
 It can be used to set up a private LoRa network for e.g. home automation infrastructure which consists of one gateway and arbitrary nodes like sensors, actors and so on.
 
-The communication protocol includes encryption and message repeating in case there is no answer from the node.
-On the node side there is a callback interface. So data input from gateway ends up in a node software callback function.
-This callback delivers the gateway data as function parameter. Please see the example for more information!
+# Features
+- low protocol overhead (only 9 bytes)
+- up to 240 Bytes of payload
+- receive confirmation
+- message retransmission if confirmation fails
+- optional encryption
+- callback registration interface 
 
 In general all communication is initiated by the gateway (data REQUEST). The nodes can only send (data RESPONSE) if they
 were adressed by the gateway. 
