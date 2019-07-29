@@ -7,11 +7,13 @@ It can be used to set up a private LoRa network for e.g. home automation infrast
 
 # Features
 - low protocol overhead (only 7 bytes)
+- 32Bit radio id for each LoRa node
+- end to end message transaction handle
 - up to 121 Bytes of payload
 - receive confirmation
 - message retransmission if confirmation fails
-- optional encryption
-- callback registration interface 
+- optional encryption (decide at compile time)
+- callback interface 
 - tx power adaption
 - round trip (request -> confirmation) ~70ms at SF5, 125kHz
 
