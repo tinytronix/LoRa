@@ -12,6 +12,8 @@ It can be used to set up a private LoRa network for e.g. home automation infrast
 - message retransmission if confirmation fails
 - optional encryption
 - callback registration interface 
+- tx power adaption
+- round trip (request -> confirmation) ~70ms at 
 
 In general all communication is initiated by the gateway (data REQUEST). The nodes can only send (data RESPONSE) if they
 were adressed by the gateway. 
