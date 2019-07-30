@@ -8,6 +8,7 @@ It can be used to set up a private LoRa network for e.g. home automation infrast
 # Features
 - low protocol overhead (only 7 bytes)
 - 32Bit radio id for each LoRa node
+- physical devices can have more than one radio id (logical device support)
 - end to end message transaction handle
 - up to 121 Bytes of payload
 - receive confirmation
