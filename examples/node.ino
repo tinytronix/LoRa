@@ -5,7 +5,7 @@
 * This example can be used for node components:
 * - LoraBridge Module (in the Arduino IDE set board to "Arduino Pro or Pro Mini")
 * - LoraInwallShuttermodule (uses internal clock, needs this bootloader: https://www.arduino.cc/en/Tutorial/ArduinoToBreadboard)
-*
+* - LoraPowerswitch (uses internal clock, needs this bootloader: https://www.arduino.cc/en/Tutorial/ArduinoToBreadboard)
 */
 
 //-------------------------------------------------------------------------------------
