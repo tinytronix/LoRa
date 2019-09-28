@@ -115,7 +115,7 @@ void loop()
   }
   else
   {
-    txTime--;
+    txTimer--;
   }
    
   lora.Service();
