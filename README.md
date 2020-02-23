@@ -27,7 +27,7 @@ were adressed by the gateway.
 - Install QList into Arduino IDE (https://github.com/SloCompTech/QList)
 
 ## Where to start
-Please refer to the gateway and node example!
+Please refer to the [gateway](https://github.com/tinytronix/LoRa/blob/master/examples/gateway.ino) and [node](https://github.com/tinytronix/LoRa/blob/master/examples/node.ino) example!
 
 ## FAQ
 Q: Is this thing LoraWAN compatible? <br>
