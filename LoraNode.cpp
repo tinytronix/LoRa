@@ -70,7 +70,7 @@ void LoraNode::Send_LORA_SENSOR_RESP(SENSOR_RESP *pResp)
 {
   uint8_t len = sizeof(pResp->nSensors);
   len += pResp->nSensors * sizeof(SENSOR_ELEM);
-  QueueResponse(LORA_EEPREAD_RESP, pResp, len);
+  QueueResponse(LORA_SENSOR_RESP, pResp, len);
 }	
 						
 void LoraNode::Send_LORA_EEPWRITE_RESP(void)
